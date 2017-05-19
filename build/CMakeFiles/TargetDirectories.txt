@@ -1,0 +1,3 @@
+/home/anaszurkiyeh/Desktop/github/ConfiguringJY901/build/CMakeFiles/edit_cache.dir
+/home/anaszurkiyeh/Desktop/github/ConfiguringJY901/build/CMakeFiles/rebuild_cache.dir
+/home/anaszurkiyeh/Desktop/github/ConfiguringJY901/build/CMakeFiles/JY.dir

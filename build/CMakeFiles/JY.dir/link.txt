@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -pthread   CMakeFiles/JY.dir/main.cpp.o CMakeFiles/JY.dir/Command.cpp.o CMakeFiles/JY.dir/SocketSendTo.cpp.o CMakeFiles/JY.dir/UserInput.cpp.o  -o bin/JY  -L/usr/local/lib  -L/home/anaszurkiyeh/Desktop/github/ConfiguringJY901/build -rdynamic 
