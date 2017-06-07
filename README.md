@@ -13,7 +13,7 @@ This application was developed for [Romaeris Corporation](https://www.linkedin.c
 
 Before using this API, JY901 sensors must be connected to a bluetooth/WIFI chip such as the [USR-C322](http://www.usriot.com/p/ti-cc3200-wifi-modules/). Which will allow it to wirelessly recieve data.
 
-Clone the repo to a Raspberry pi, navigate to ConfiguringJY901/build/bin then run the executable JY by following these instructions:
+Clone the repo to a Raspberry pi, navigate to ConfiguringJY901/build/bin then run the executable JY by following these instructions:  
 ..* You can show a list of all available instructions by executing ``` ./JY 0 help``` 
 
 
