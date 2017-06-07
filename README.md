@@ -1,40 +1,43 @@
+# Feedback Tracker
 
 
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
-
-## Code Example
-
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+This project was implemented to wirelessly configure a set of gyroscopes of type JY901. The JY901 sensors are mounted on a UAV to aid in navigation however, configuring JY901s requires physically removing them and connecting them serially to a device through UART. This method is not only impractical, but it can affect the life-time of the JY901s as delicate electronics are not made for constant switching on and off.
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+This application was developed for [Romaeris Corporation](https://www.linkedin.com/company/romaeris-corporation). Romaeris Corporation is a privately owned aerospace technology company headquartered in Ottawa, Canada. The company is developing unmanned aerial vehicles (UAVs) and aircraft telemetry and health monitoring systems. Romaeris integrated this API into their test model to help them expirement easily with various settings and configrations. 
 
 ## Installation
 
-Provide code examples and explanations of how to get the project.
+Before using this API, JY901 sensors must be connected to a bluetooth/WIFI chip such as the [USR-C322](http://www.usriot.com/p/ti-cc3200-wifi-modules/). Which will allow it to wirelessly recieve data.
 
-## API Reference
+Clone the repo to a Raspberry pi, navigate to ConfiguringJY901/build/bin then run the executable JY by following these instructions:
+..* You can show a list of all available instructions by executing ``` ./JY 0 help``` 
 
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+
+then run the [tracking code](https://github.com/zurkiyeh/FeedbackTracker/tree/master/Tracker/build) by running the executable "mainProject". That will initiate the tracking process. Meanwhile run the [Transmission application](https://github.com/zurkiyeh/FeedbackTracker/tree/master/Transmission/onebyte/trans) on a seperate Raspberry pi. Finally, to recieve the data, run the [receiving application](https://github.com/zurkiyeh/FeedbackTracker/tree/master/Transmission/onebyte/rec) on a third RPi. 
+
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+Tests and simulations were conducted on the project report which can be provided seperetly. Please contact me for more information.
 
 ## Contributors
 
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
+This project was developed with the help of [Zachary (Tsa) Liu ](https://www.linkedin.com/in/tsaliu)
 
 
 
+## Detailed Description
 
 
+The transmission subsystem consists of a servo-controlled target that rotates along two axes in a spherical fashion. The tracking is done using a feedback camera, fixed infront of the target, and controlled by a Raspberry Pi. The Raspberry Pi also, directs a servo-controlled optical mirror that rotates along two axes based on the feedback it recieves from the camera. This ensures real-time transmission and recieving of data.The transmission and recieving of data is done using another two seperate Raspberry Pis.
 
-# ConfiguringJY901
+
+The Raspicam captures the video stream then passes it to the Raspberry Pi, which in turn applies Haar Cascade classefiers that detect and track the target. This process is repeated constintly and an updated coordinate of the target is always captured. After the new coordinate has been captured, a camera transformation is then used to obtain the coordinates in real-life dimensions (milimeters) using the pinhole camera model. Coordinate transformation is then applied and the coordinate in milimeter is used to
+calculate both angles of inclination of the mirror using predeveloped mathmatical model.
+
+The transmitssion and recieving subsystem handles the modulation and demodulation of data. Data can be any encoded binary data (i.e. modulated audio/video data). In this project, the transmitted data is a integer sequence that runs from 0-255.
+
