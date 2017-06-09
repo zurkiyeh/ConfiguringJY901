@@ -7,7 +7,7 @@ This project was implemented to wirelessly configure a set of gyroscopes of type
 This application was developed for [Romaeris Corporation](https://www.linkedin.com/company/romaeris-corporation). Romaeris Corporation is a privately owned aerospace technology company headquartered in Ottawa, Canada. The company is developing unmanned aerial vehicles (UAVs) and aircraft telemetry and health monitoring systems. Romaeris integrated this API into their test model to help them expirement easily with various settings and configrations. 
 
 ## Contributers
-This API was developed under the supervision of [Professor Wail Gueaieb](mailto:wgueaieb@uottawa.ca)
+This API was developed under the supervision of [Professor Wail Gueaieb](mailto:wgueaieb@uottawa.ca).
 
 
 ## Installation
@@ -27,6 +27,16 @@ The API will shows a message indicating whether or not the command was sent succ
 
 ## Tests
 
+### A screenshot showing how to use the API
 ![API test](Commands.png "API test")
+
+### A screenshot showing the command menu
 ![API test](helpCommand.png "API test")
+
+
+
+
+## Detailed Description
+
+This implementation employs object oriented programming in designing the API. Commands are objects that contain different attributes such as names, hex codes and many more. It also relies on UDP sockets in transmitting and recieving of data. Different classes handle different tasks; for example, the class UserInput hanldes input from users and redirects it to an apprropriate function. Similarly, classes sendToSocket and Command exchange information to achieve different tasks.
 
