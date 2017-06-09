@@ -11,10 +11,17 @@ This application was developed for [Romaeris Corporation](https://www.linkedin.c
 
 ## Installation
 
-Before using this API, JY901 sensors must be connected to a bluetooth/WIFI chip such as the [USR-C322](http://www.usriot.com/p/ti-cc3200-wifi-modules/). Which will allow it to wirelessly recieve data.
+Before using this API, JY901 sensors must be connected to a WIFI chip such as the [USR-C322](http://www.usriot.com/p/ti-cc3200-wifi-modules/). Which will allow it to wirelessly recieve data. The wireless chip will allocate a specific IP address for every sensor, which allows for direct communication with individual sensors.
 
 Clone the repo to a Raspberry pi, navigate to ConfiguringJY901/build/bin then run the executable JY by following these instructions:  
-..* You can show a list of all available instructions by executing ``` ./JY 0 help``` 
+..* To send a command, use the follwoing template ``` ./JY [IPAddress] [CommandName/Number] [Parameter1] [Parameter2]```.  
+..* IPAddress is the IP Address allocated to the sensor by the WIFI chip.  
+..* CommandName/Number is obtained from the sensor user manual. 
+..* Parameter1, Parameter2 are the values shown in the data sheet. For example; for the Baud rate Command ```BAUD```, users can input 4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000 or 256000.  
+..* For instructions that take only one parameter, Parameter2 can be left empty.
+
+..* You can show a list of all available instructions and commands by executing ``` ./JY 0 help```  
+
 
 
 then run the [tracking code](https://github.com/zurkiyeh/FeedbackTracker/tree/master/Tracker/build) by running the executable "mainProject". That will initiate the tracking process. Meanwhile run the [Transmission application](https://github.com/zurkiyeh/FeedbackTracker/tree/master/Transmission/onebyte/trans) on a seperate Raspberry pi. Finally, to recieve the data, run the [receiving application](https://github.com/zurkiyeh/FeedbackTracker/tree/master/Transmission/onebyte/rec) on a third RPi. 
